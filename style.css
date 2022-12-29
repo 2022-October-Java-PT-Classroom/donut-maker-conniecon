@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Lacquer&display=swap');
+    
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lacquer', cursive;
+}
+
+body {
+  background-image: url("images/checkerboard-background.jpeg");
+  background-color: #cccccc;
+  background-repeat: no-repeat;
+  height: 500px;
+  background-size: cover;
+}
+
+/* .hero-image {
+  width: 100%;
+} */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+#nav-bar li {
+  list-style: none;
+  display: inline-block;
+  padding: 0px 20px;
+}
+#nav-bar button {
+  background-color: white;
+  border: none;
+  color: black;
+  font-size: 3rem;
+  padding: 15px;
+}
+
+#nav-bar button:hover{
+  background-color: rgb(94, 231, 240);
+  color: rgb(195, 55, 55);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 300px 400px 300px;
+  /* grid-template-rows: repeat(4, [row] auto); */
+  gap: 50px;
+  justify-content: center;
+  text-align: center;
+  padding: 200px;
+  align-items: center;
+
+}
+
+section button {
+  background-color: rgb(195, 55, 55);
+  padding: 24px;
+  font-size: 2rem;
+  border-radius: 50%;
+  border: solid 5px;
+}
+
+.donut-clicker {
+  /* border: solid 5px; */
+}
+
+.donut-clicker:hover {
+  transform: scale(1.10);
+}
+
+section button:hover {
+  transform: scale(1.10);
+}
+
+.heading {
+  background-color: white;
+  padding: 25px;
+  margin: 50px;
+  border: solid 5px;
+  font-size: 1.5rem;
+  /* border-radius: 50%; */
+}
+
+/* .clickerContainer img {
+  position: relative;
+  transition: all .2s ease-in-out;
+}
+
+.clickerContainer img:hover {
+  transform: scale(1.10);
+}
+
+.clickerContainer img:active {
+  transform: scale(.99);
+} */
