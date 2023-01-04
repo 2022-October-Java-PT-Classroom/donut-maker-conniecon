@@ -9,27 +9,44 @@
 }
 
 body {
-  background-image: url("images/checkerboard-background.jpeg");
-  background-color: #cccccc;
-  background-repeat: no-repeat;
+  /* background-image: url("images/checkerboard-background.jpeg"); */
+  background-color: white;
+  /* background-repeat: no-repeat;
   height: 500px;
+  background-size: cover; */
+  width: 90%;
+  margin: 0;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  /* background-image: url("images/checkerboard-background.jpeg"); */
+  background-color: rgb(216, 212, 212);
+  background-position: center;
+  background-repeat: repeat;
+  height: 1100px;
   background-size: cover;
 }
 
-/* .hero-image {
-  width: 100%;
-} */
 header {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: white;
+  border: 5px solid black;
 }
+
+ul {
+  display: flex;
+  justify-content: center;
+}
+
 #nav-bar li {
   list-style: none;
-  display: inline-block;
   padding: 0px 20px;
 }
+
 #nav-bar button {
   background-color: white;
   border: none;
@@ -39,13 +56,49 @@ header {
 }
 
 #nav-bar button:hover{
-  background-color: rgb(94, 231, 240);
+  background-color: rgb(92, 223, 233);
   color: rgb(195, 55, 55);
 }
 
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;                  /*double check */
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgb(147, 234, 234);
+  /* padding: 10px; */
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  /* z-index: 1; */
+}
+
+.dropdown-content p {
+  font-size: 2rem;
+  margin : 20px;
+  padding: 20px;
+  color: rgb(195, 55, 55);
+}
+.dropdown-content p a {
+  color: black;
+  text-decoration: none;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+/* .dropdown:hover .drop-btn {background-color: #3e8e41;} */
+
+
+
 .grid-container {
   display: grid;
-  grid-template-columns: 300px 400px 300px;
+  grid-template-columns: 275px 400px 275px;
   /* grid-template-rows: repeat(4, [row] auto); */
   gap: 50px;
   justify-content: center;
@@ -58,6 +111,7 @@ header {
 section button {
   background-color: rgb(195, 55, 55);
   padding: 24px;
+  /* color: rgb(185, 183, 183); */
   font-size: 2rem;
   border-radius: 50%;
   border: solid 5px;
@@ -74,6 +128,9 @@ section button {
 section button:hover {
   transform: scale(1.10);
 }
+.enable-clicker {
+  color: rgb(160, 157, 157);
+}
 
 .heading {
   background-color: white;
@@ -82,6 +139,18 @@ section button:hover {
   border: solid 5px;
   font-size: 1.5rem;
   /* border-radius: 50%; */
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: 5px solid black;
+  font-size: 1rem;
+  padding: 10px;
+  margin: 0 auto;
+  width: 90%;
 }
 
 /* .clickerContainer img {

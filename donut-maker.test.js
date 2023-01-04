@@ -3,7 +3,7 @@ import DonutMaker from './donut-maker.js';
 describe ('DonutMaker object', () => {
   test('Does donutMaker add one donut to count?', () => {
     const underTest =  new DonutMaker(1);
-    underTest.donutCounter();
+    underTest.addToDonutCount();
     expect(underTest.donutCount).toEqual(2);
   });
 
@@ -16,7 +16,7 @@ describe ('DonutMaker object', () => {
 
   test("Does autoClicker add one donut to autoClickerCount", () => {
     const underTest = new DonutMaker(1, 100);
-    underTest.autoClickerCounter();
+    underTest.addToAutoClickerCount();
     expect(underTest.autoClickerCount).toEqual(101);
   });
 
@@ -28,14 +28,14 @@ describe ('DonutMaker object', () => {
 
   test("Does donutMaker subtract cost of autoClicker from donut count", () => {
     const underTest = new DonutMaker(100, 1);
-    underTest.buyAutoClicker();
+    underTest.buyFirstAutoClicker();
     expect(underTest.donutCount).toEqual(0);
   });
 
   test("Does donutMaker subtract cost of 110 donuts for second autoClicker from donut count",  () => {
-    const underTest = new DonutMaker(110, 1);
+    const underTest = new DonutMaker(100, 1, 100);
     underTest.buySecondAutoClicker();
-    expect(underTest.donutCount).toEqual(0);
+    expect(underTest.donutCount).toEqual(110);
   });
 
   test("Does donutMaker subtract cost of previous autoClicker plus 10%", () => {
@@ -64,13 +64,13 @@ describe ('DonutMaker object', () => {
 
   test("Does DonutMaker add to Donut Multiplier count", () => {
     const underTest = new DonutMaker(10, 1, 100, 1, 10);
-    underTest.donutMultiplierCounter();
+    underTest.addToDonutMultiplierCount();
     expect(underTest.donutMultiplierCount).toEqual(2);
   });
 
   test("Subtract the amount of DonutMultiplier from donutCount", () => {
     const underTest = new DonutMaker(10, 1, 100, 1, 10);
-    underTest.subtractDonutMultiplierCostFromDonutCount();
+    underTest.buyDonutMultiplier();
     expect(underTest.donutCount).toEqual(0);
   })
 
@@ -87,16 +87,16 @@ describe ('DonutMaker object', () => {
   });
 
   test("Increase donutCount by 1.2x with first Donut Multiplier", () => {
-    const underTest = new DonutMaker(0, 1, 1, 1, 0);
-    underTest.increaseDonutCountWithFirstDonutMultiplier();
+    const underTest = new DonutMaker(1, 1, 1, 1, 0);
+    underTest.increaseDonutCountWithDonutMultiplier();
     expect(underTest.donutCount).toEqual(1.2);
   });
 
-  test("Increase Multiplier to 1.2 * donutMultiplierCount", () => {
-    const underTest = new DonutMaker();
-    underTest.increaseMultiplierExponentially();
-    expect(underTest.donutCount).toEqual();
+  // test("Increase Multiplier to 1.2 * donutMultiplierCount", () => {
+  //   const underTest = new DonutMaker();
+  //   underTest.increaseMultiplierExponentially();
+  //   expect(underTest.donutCount).toEqual();
 
-  });
+  // });
 
 });

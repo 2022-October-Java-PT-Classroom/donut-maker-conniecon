@@ -6,47 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Donut Clicker</title>
     <link rel="stylesheet" href="style.css">
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-    <link href="https://fonts.googleapis.com/css2?family=Lacquer&display=swap" rel="stylesheet"> -->
-    
   </head>
   <body>
-    
+    <div class="container">
       <header>
         <nav id="nav-bar">
         <ul>
-          <li class="nav-list"><button class="company">The Company</button></li>
-          <li class="nav-list"><button class="inspiration">The Inspiration</button></li>
-          <li class="nav-list"><button class="contact">The Contact</button></li>
+          <div class="dropdown">
+            <li class="drop-btn"><button class="company">The Company</button></li>
+            <div class="dropdown-content">
+              <p>Welcome to Fred the Baker Baking Company</p>
+            </div>
+          </div>
+          <div class="dropdown">
+            <li class="drop-btn"><button class="inspiration">The Inspiration</button></li>
+            <div class="dropdown-content">
+              <p>Inspired by the Cookie Clicker Game</p>
+            </div>
+          </div>
+          <div class="dropdown">
+            <li class="drop-btn"><button class="contact">The Contact</button></li>
+            <div class="dropdown-content">
+              <p>Contact Me:</p>
+              <p><a href="mailto:littlemissconnie@yahoo.com?subject= What's Up Constance?"
+              >littlemissconnie@yahoo.com</a></p>
+            </div>
+          </div>
         </ul>
         </nav>
       </header>
       <main>
-        <!-- background image -->
-        <!-- <img class="hero-image" src="images/images.png"> -->
-        
-        
       <div class="grid-container">
+        <!-- AUTO CLICKER -->
         <section class="grid-item grid-item-1">
-          <button class="auto-clicker">buy auto clicker</button>
-          <h2 class="heading"> Auto Clickers: <span class="auto-score">0</span></h2>
+          <button id="enable-auto-clicker" class="auto-clicker">buy auto clicker for $<span class="auto-clicker-cost">5</span></button><!-- change to $100 -->
+          <h2 class="heading"> Auto Clickers: <span id="autoScore">0</span></h2>
         </section>
-
+        <!-- DONUT CLICKER-->
         <section class="grid-item grid-item-2">
-          
-            <img class="donut-clicker" src="images/blue-outline-donut2.png" alt="blue-donut" width="350px">
-            <h1 class="heading" >Donuts: <span class="donut-score">0</span></h1>
-          
+          <img class="donut-clicker" src="images/blue-outline-donut2.png" alt="blue-donut" width="350px" >
+            <h1 class="heading" >Donuts: <span id="donutScore">0</span></h1>
         </section>
-
+        <!-- DONUT MULTIPLIER-->
         <section class="grid-item grid-item-3">
-          <button class="multiplier-clicker">buy multiplier clicker</button>
-          <h2 class="heading"> Multiplier Clickers: <span class="multiplier-score">0</span></h2>
+          <button class="multiplier-clicker" id="enable-multi-clicker">buy multiplier clicker for $<span class="multi-clicker-cost">10</span></button>
+          <h2 class="heading">Donut Multipliers: <span id="multiplierScore">0</span></h2>
         </section>
       </div>
-
+      
       </main>
-    <script src="./donut-maker-app.js"></script>
+      
+      <script src="./donut-maker-app.js" type="module"></script>
+      
+    </div>
+    <footer>2022 Constance Cain</footer>
+    
   </body>
 </html>

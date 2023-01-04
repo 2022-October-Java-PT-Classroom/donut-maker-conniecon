@@ -1,15 +1,14 @@
 class DonutMaker {
-  constructor(donutCount, autoClickerCount, autoClickerCost, donutMultiplierCount, donutMultiplierCost) {
-    this.donutCount = donutCount;
-    this.autoClickerCount = autoClickerCount;
-    this.autoClickerCost = autoClickerCost;
-    this.donutMultiplierCount = donutMultiplierCount;
-    this.donutMultiplierCost = donutMultiplierCost;
-
+  constructor() {
+    this.donutCount = 0;
+    this.autoClickerCount = 0;
+    this.autoClickerCost = 5;    // change to 100
+    this.donutMultiplierCount = 0;
+    this.donutMultiplierCost = 10;   // change to 10
   }
 
   // add to donutCount
-  donutCounter(){
+  addToDonutCount(){
     this.donutCount++;
   }
 
@@ -19,7 +18,7 @@ class DonutMaker {
   }
 
   // add to autoClickerCount
-  autoClickerCounter(){
+  addToAutoClickerCount(){
     this.autoClickerCount++;
   }
 
@@ -29,18 +28,18 @@ class DonutMaker {
   }
 
   // buy AutoClicker
-  buyAutoClicker(){
-    this.donutCount -= 100;
+  buyFirstAutoClicker(){
+    this.donutCount -= 5;     // change to 100
   }
 
   // buy secondAutoClicker
   buySecondAutoClicker(){
-    this.donutCount -= 110;
+    this.donutCount -= 11;
   }
 
   // buy additionalAutoClicker
   buyAdditionalAutoClicker() {
-    this.donutCount - Math.round(this.autoClickerCost * 0.1);
+    this.donutCount += Math.round(this.autoClickerCost * 0.1);
   }
 
   // are there enough donuts to buy clicker
@@ -49,29 +48,42 @@ class DonutMaker {
       this.donutCount - this.autoClickerCost;
     }
   }
+
+
   // increase donut count when auto clicker is activated
   increaseDonutCountWhenAutoClickerIsActivated() {
-    for (let i = 0; i < this.autoClickerCount; i++){
-      this.donutCount++;
+    if(this.autoClickerCount > 0) {
+      this.donutCount += Math.pow(1.2, this.autoClickerCount);
     }
+    // for (let i = 0; i < this.autoClickerCount; i++){
+    //   this.donutCount++;
+    // }
   }
 
-  // retrieve donut multiplier
+  // retrieve donut multiplier Count
   getDonutMultiplierCount() {
     return this.donutMultiplierCount;
   }
 
+  // retrieve donut multiplier cost
+  getDonutMultiplierCost() {
+    return this.donutMultiplierCost;
+  }
+
   // add to donut Multiplier
-  donutMultiplierCounter() {
+  addToDonutMultiplierCount() {
     this.donutMultiplierCount++;
   }
 
 
 
 
-// subtract DonutMultiplier from DonutCount
-  subtractDonutMultiplierCostFromDonutCount(){
-    this.donutCount -= 10;
+// subtract DonutMultiplier from DonutCount    //??????????????
+  buyDonutMultiplier() {
+    // if(this.donutCount == 0){
+    //   this.donutCount += 0;
+    // }
+    this.donutCount -= 10;                 
   }
 
 
@@ -79,7 +91,7 @@ class DonutMaker {
 
   // increase donut Multiplier cost
   increaseCostOfDonutMultiplier(){
-    this.donutMultiplierCost += Math.round(this.donutMultiplierCost * 0.1);
+    this.donutMultiplierCost = Math.round(this.donutMultiplierCost * 1.1);
   }
 
   // are there enough donuts to buy multiplier
@@ -90,15 +102,45 @@ class DonutMaker {
   }
 
   // increase donut count by 1.2 with one donutMultiplier
-  increaseDonutCountWithFirstDonutMultiplier(){
+  increaseDonutCountWithDonutMultiplier(){
     for (let i = 0; i < this.donutMultiplierCount; i++){
       this.donutCount += 1.2;
     }
   }
 
   // increase by 1.2x
-  increaseMultiplierExponentially(){
-    this.donutCount = Math.pow(1.2, DonutMultiplierCount);
+  increaseMultiplierCountExponentially(){
+    
+      this.donutCount += Math.round(this.autoClickerCount * Math.pow(1.2, this.donutMultiplierCount));
+    
+    
+  }
+
+  // disable autoClicker until donut count reaches 10
+  enableAutoClickerBtn(){
+    if(this.donutCount >= this.autoClickerCost) {
+      
+      document.getElementById("enable-auto-clicker").disabled = false;
+      document.getElementById("enable-auto-clicker").style.color = "black";
+      document.getElementById("enable-auto-clicker").style.background = "rgb(195, 55, 55)";
+    } else {
+      document.getElementById("enable-auto-clicker").disabled = true;
+      document.getElementById("enable-auto-clicker").style.color = "grey";
+      document.getElementById("enable-auto-clicker").style.background = "lightgrey";
+    }
+  }
+
+  enableMultiClickerBtn(){
+    if(this.donutCount >= this.donutMultiplierCost) {
+      
+      document.getElementById("enable-multi-clicker").disabled = false;
+      document.getElementById("enable-multi-clicker").style.color = "black";
+      document.getElementById("enable-multi-clicker").style.background = "rgb(195, 55, 55)";
+    } else {
+      document.getElementById("enable-multi-clicker").disabled = true;
+      document.getElementById("enable-multi-clicker").style.color = "grey";
+      document.getElementById("enable-multi-clicker").style.background = "lightgrey";
+    }
   }
   
 
