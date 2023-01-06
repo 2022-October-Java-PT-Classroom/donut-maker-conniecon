@@ -2,14 +2,21 @@ class DonutMaker {
   constructor() {
     this.donutCount = 0;
     this.autoClickerCount = 0;
-    this.autoClickerCost = 5;    // change to 100
+    this.autoClickerCost = 100;    // change to 100
     this.donutMultiplierCount = 0;
     this.donutMultiplierCost = 10;   // change to 10
   }
 
   // add to donutCount
   addToDonutCount(){
-    this.donutCount++;
+    //Math.round(this.donutCount++);
+
+    if(this.autoClickerCount === 0 && this.donutMultiplierCount === 0){
+      this.donutCount++;
+    }else if(this.donutMultiplierCount > 0){
+      this.donutCount += Math.round(Math.pow(1.2, this.donutMultiplierCount));
+        // There's an equation that will allow you to increase the amunt you get per donut click!
+    }
   }
 
   // retrieve donutCount
@@ -29,7 +36,7 @@ class DonutMaker {
 
   // buy AutoClicker
   buyFirstAutoClicker(){
-    this.donutCount -= 5;     // change to 100
+    this.donutCount -= 100;     // CHANGE TO 100
   }
 
   // buy secondAutoClicker
@@ -39,7 +46,8 @@ class DonutMaker {
 
   // buy additionalAutoClicker
   buyAdditionalAutoClicker() {
-    this.donutCount += Math.round(this.autoClickerCost * 0.1);
+    this.donutCount -= 100;          // CHANGE TO 100
+    this.donutCount += Math.round((this.autoClickerCost * 0.1));
   }
 
   // are there enough donuts to buy clicker
@@ -75,48 +83,58 @@ class DonutMaker {
     this.donutMultiplierCount++;
   }
 
+  // add to donut Multiplier
+  // addToDonutMultiplierCount() {
+  //   this.donutMultiplierCount++;
+  // }
+
 
 
 
 // subtract DonutMultiplier from DonutCount    //??????????????
   buyDonutMultiplier() {
-    // if(this.donutCount == 0){
-    //   this.donutCount += 0;
-    // }
-    this.donutCount -= 10;                 
+    this.donutCount -= this.donutMultiplierCost;                 
   }
 
 
+  increaseCostOfAutoClicker(){
+    this.autoClickerCost = Math.round(this.autoClickerCost * 1.1);
+  }
 
+  ////////////////////////////////////////////////////
+  // increaseMultiplierCountExponentially(){
+  //   this.donutMultiplierCount = Math.round(Math.pow(1.2, this.donutMultiplierCount));
+  // }
 
-  // increase donut Multiplier cost
   increaseCostOfDonutMultiplier(){
     this.donutMultiplierCost = Math.round(this.donutMultiplierCost * 1.1);
   }
 
-  // are there enough donuts to buy multiplier
+  increaseMultiplierCountExponentially(){
+    this.donutCount += Math.round(this.autoClickerCount * Math.pow(1.2, this.donutMultiplierCount));
+  }
+
+  increaseDonutCountWithDonutMultiplier(){
+    // if(this.donutMultiplierCount >= 1 ) {
+       this.donutCount = Math.round(this.donutCount * Math.pow(1.2, this.donutMultiplierCount));
+    }
+  
+  ////////////////////////////////////////////
+
+  
+  
   checkDonutCountToBuyDonutMultiplier(){
     if(this.donutCount >= this.donutMultiplierCost) {
-      this.donutCount - this.donutMultiplierCost;
+      Math.round(this.donutCount - this.donutMultiplierCost);
     }
   }
 
-  // increase donut count by 1.2 with one donutMultiplier
-  increaseDonutCountWithDonutMultiplier(){
-    for (let i = 0; i < this.donutMultiplierCount; i++){
-      this.donutCount += 1.2;
-    }
-  }
+  
+  
 
-  // increase by 1.2x
-  increaseMultiplierCountExponentially(){
-    
-      this.donutCount += Math.round(this.autoClickerCount * Math.pow(1.2, this.donutMultiplierCount));
-    
-    
-  }
+  
 
-  // disable autoClicker until donut count reaches 10
+  // disable autoClicker until donut count reaches 100
   enableAutoClickerBtn(){
     if(this.donutCount >= this.autoClickerCost) {
       
@@ -125,8 +143,7 @@ class DonutMaker {
       document.getElementById("enable-auto-clicker").style.background = "rgb(195, 55, 55)";
     } else {
       document.getElementById("enable-auto-clicker").disabled = true;
-      document.getElementById("enable-auto-clicker").style.color = "grey";
-      document.getElementById("enable-auto-clicker").style.background = "lightgrey";
+      document.getElementById("enable-auto-clicker").style.background = "rgb(196, 113, 113)";
     }
   }
 
@@ -138,8 +155,8 @@ class DonutMaker {
       document.getElementById("enable-multi-clicker").style.background = "rgb(195, 55, 55)";
     } else {
       document.getElementById("enable-multi-clicker").disabled = true;
-      document.getElementById("enable-multi-clicker").style.color = "grey";
-      document.getElementById("enable-multi-clicker").style.background = "lightgrey";
+      // document.getElementById("enable-multi-clicker").style.color = "grey";
+      document.getElementById("enable-multi-clicker").style.background = "rgb(196, 113, 113)";
     }
   }
   
